@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type Node struct {
 	data string
 	next *Node
@@ -24,6 +28,7 @@ func (list *LinkedList) contains(data string) bool {
 		if current.data == data {
 			contains = true
 		}
+		current = current.next
 	}
 
 	return contains
@@ -34,6 +39,8 @@ func main() {
 
 	list := LinkedList{}
 	list.insert("value 1")
-	list.contains("value 1")
+	contains := list.contains("value 2")
 
+	formattedString := fmt.Sprintf("list has value? %t", contains)
+	fmt.Println(formattedString)
 }
